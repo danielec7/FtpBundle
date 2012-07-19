@@ -1,0 +1,25 @@
+{
+    "name": "ijanki/ftp-bundle",
+    "type": "symfony-bundle",
+    "description": "A Symfony2 Bundle to wrap the PHP ftp extension functionality in a more classy way.",
+    "keywords": ["ftp"],
+    "homepage": "https://github.com/iJanki/FtpBundle",
+    "license": "MIT",
+    "authors": [
+        {
+"name": "Daniele Cesarini",
+"email": "daniele.cesarini@gmail.com",
+"homepage": "http://www.danielecesarini.com",
+"role": "Developer"
+}
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": {
+             "Ijanki\\Bundle\\FtpBundle": ""
+        }
+    },
+    "target-dir": "Ijanki/Bundle/FtpBundle"
+}
