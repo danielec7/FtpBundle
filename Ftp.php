@@ -4,9 +4,6 @@ namespace Ijanki\Bundle\FtpBundle;
 
 use Ijanki\Bundle\FtpBundle\Exception\FtpException;
 
-/**
-*
-*/
 class Ftp
 {
     private $resource;
@@ -37,30 +34,38 @@ class Ftp
             } catch (\ErrorException $e) {
                 throw new FtpException($e->getMessage());
             }
-            $res = null;
+            $result = null;
 
         } elseif (!is_resource($this->resource)) {
-            #restore_error_handler();
             throw new FtpException("Not connected to FTP server. Call connect() or ssl_connect() first.");
-
         } else {
             array_unshift($args, $this->resource);
             try {
-                $res = call_user_func_array($func, $args);
+                $result = call_user_func_array($func, $args);
             } catch (\ErrorException $e) {
                 throw new FtpException($e->getMessage());
             }
 
         }
 
-        return $res;
+        return $result;
+    }
+    
+    /**
+     * Put a string in remote $file_name
+     */
+    
+    public function putContents($file_name, $data, $mode = FTP_ASCII)
+    {
+        if (!is_resource($this->resource)) {
+            throw new FtpException("Not connected to FTP server. Call connect() or ssl_connect() first.");
+        }
+        $temp = tmpfile();
+        fwrite($temp, $data);
+        fseek($temp, 0);
+        return $this->fput($file_name, $temp, $mode);
     }
 
-    /**
-    * Recursive creates directories.
-    * @param string
-    * @return void
-    */
     public function mkDirRecursive($dir)
     {
         $parts = explode('/', $dir);
@@ -78,16 +83,11 @@ class Ftp
         }
     }
 
-    /**
-    * Recursive deletes path.
-    * @param string
-    * @return void
-    */
     public function deleteRecursive($path)
     {
         foreach ((array) $this->nlist($path) as $file) {
             if ($file !== '.' && $file !== '..') {
-                $this->deleteRecursive(strpos($file, '/') === FALSE ? "$path/$file" : $file);
+                $this->deleteRecursive(strpos($file, '/') === false ? "$path/$file" : $file);
             }
         }
         $this->rmdir($path);
