@@ -74,7 +74,7 @@ public function indexAction()
 {
     //...
     try {
-        $ftp = $this->container->get('ijanki_Ftp');
+        $ftp = $this->container->get('ijanki_ftp');
     	$ftp->connect($host);
     	$ftp->login($username, $password);
     	$ftp->put($destination_file, $source_file, FTP_BINARY);
