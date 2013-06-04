@@ -65,7 +65,18 @@ class Ftp
         fseek($temp, 0);
         return $this->fput($file_name, $temp, $mode);
     }
-
+    
+    public function isDir($dir)
+    {
+    	$current = $this->pwd();
+    	try {
+    		$this->chdir($dir);
+    	} catch (FtpException $e) {
+    	}
+    	$this->chdir($current);
+    	return empty($e);
+    }
+    
     public function mkDirRecursive($dir)
     {
         $parts = explode('/', $dir);
