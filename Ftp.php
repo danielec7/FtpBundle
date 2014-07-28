@@ -72,8 +72,8 @@ class Ftp
     	try {
     		$this->chdir($dir);
     	} catch (FtpException $e) {
+    	    $this->chdir($current);
     	}
-    	$this->chdir($current);
     	return empty($e);
     }
     
