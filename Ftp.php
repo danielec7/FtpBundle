@@ -103,4 +103,35 @@ class Ftp
         }
         $this->rmdir($path);
     }
+
+    /**
+     * Interpret connection info from url string
+     */
+
+    public function connectUrl($url)
+    {
+        if(!preg_match('!^ftp(?<ssl>s?)://(?<user>[^:]+):(?<pass>[^@]+)@(?<host>[^:/]+)(?:[:](?<port>\d+))?(?<path>.*)$!i', $url, $match)) {
+            throw new \FtpException('Url must be in format: ftp[s]://username:password@hostname[:port]/[path]');
+        }
+
+        // default port if necessary
+        if (empty($match['port'])) {
+            $match['port'] = '21';
+        }
+
+        // determine and invoke connect method
+        $connectMethod = (bool) $match['ssl'] ? 'ssl_connect' : 'connect';
+        $this->$connectMethod($match['host'], $match['port']);
+
+        // authenticate
+        if (!$this->login($match['user'], $match['pass'])) {
+            throw new \FtpException("Login failed as $match['user']");
+        }
+
+        // normalize and change to path, if one given
+        $match['path'] = trim($match['path'], '/');
+        if (!empty($match['path'])) {
+            $this->chdir("/$match['path']/");
+        }
+    }
 }
