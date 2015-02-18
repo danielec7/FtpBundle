@@ -6,7 +6,7 @@ php:
     - 5.6
     - hhvm
 
-before_install
+before_install:
     - composer self-update
 
 install:
