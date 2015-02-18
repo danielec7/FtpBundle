@@ -125,13 +125,13 @@ class Ftp
 
         // authenticate
         if (!$this->login($match['user'], $match['pass'])) {
-            throw new \FtpException("Login failed as $match['user']");
+            throw new \FtpException("Login failed as " . $match['user']);
         }
 
         // normalize and change to path, if one given
         $match['path'] = trim($match['path'], '/');
         if (!empty($match['path'])) {
-            $this->chdir("/$match['path']/");
+            $this->chdir("/$match[path]/");
         }
     }
 }
