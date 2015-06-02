@@ -4,6 +4,46 @@ namespace Ijanki\Bundle\FtpBundle;
 
 use Ijanki\Bundle\FtpBundle\Exception\FtpException;
 
+/**
+ * Class Ftp
+ *
+ * @package Ijanki\Bundle\FtpBundle
+ *
+ * @method	bool		alloc ( int $filesize, string &$result = null )
+ * @method	bool		cdup ( )
+ * @method	bool		chdir ( string $directory )
+ * @method	int		chmod ( int $mode , string $filename )
+ * @method	bool		close ( )
+ * @method	resource	connect ( string $host, int $port = 21, int $timeout = 90 )
+ * @method	bool		delete ( string $path )
+ * @method	bool		exec ( string $command )
+ * @method	bool		fget ( resource $handle , string $remote_file , int $mode, int $resumepos = 0 )
+ * @method	bool		fput ( string $remote_file , resource $handle , int $mode, int $startpos = 0 )
+ * @method	mixed		get_option ( int $option )
+ * @method	bool		get ( string $local_file , string $remote_file , int $mode, int $resumepos = 0 )
+ * @method	bool		login ( string $username , string $password )
+ * @method	int		mdtm ( string $remote_file )
+ * @method	string		mkdir ( string $directory )
+ * @method	int		nb_continue ( )
+ * @method	int		nb_fget ( resource $handle , string $remote_file , int $mode, int $resumepos = 0 )
+ * @method	int		nb_fput ( string $remote_file , resource $handle , int $mode, int $startpos = 0 )
+ * @method	int		nb_get ( string $local_file , string $remote_file , int $mode, int $resumepos = 0 )
+ * @method	int		nb_put ( string $remote_file , string $local_file , int $mode, int $startpos = 0 )
+ * @method	array		nlist ( string $directory )
+ * @method	bool		pasv ( bool $pasv )
+ * @method	bool		put ( string $remote_file , string $local_file , int $mode, int $startpos = 0 )
+ * @method	string		pwd ( )
+ * @method	bool		quit ( )
+ * @method	array		raw ( string $command )
+ * @method	mixed		rawlist ( string $directory, bool $recursive = false )
+ * @method	bool		rename ( string $oldname , string $newname )
+ * @method	bool		rmdir ( string $directory )
+ * @method	bool		set_option ( int $option , mixed $value )
+ * @method	bool		site ( string $command )
+ * @method	int		size ( string $remote_file )
+ * @method	resource	ssl_connect ( string $host, int $port = 21, int $timeout = 90 )
+ * @method	string		systype ( )
+ */
 class Ftp
 {
     private $resource;
