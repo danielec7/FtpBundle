@@ -74,6 +74,9 @@ class Ftp
             } catch (\ErrorException $e) {
                 throw new FtpException($e->getMessage());
             }
+            if (!is_resource($this->resource)) {
+                throw new FtpException("An error occured while trying to connect to FTP server.");
+            }
             $result = null;
 
         } elseif (!is_resource($this->resource)) {
