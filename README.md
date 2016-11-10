@@ -8,43 +8,9 @@ A Symfony2 Bundle to wrap the PHP ftp extension functionality in a more "classy"
 
 ### Step 1: Install the bundle
 
-#### For Symfony 2.0:
+Require the bundle with composer:
 
-Add the following entries to the deps in the root of your project file:
-
-```
-[IjankiFtpBundle]
-    git=git://github.com/iJanki/FtpBundle.git
-    target=bundles/Ijanki/Bundle/FtpBundle
-```
-
-Now, run the vendors script to download the bundle:
-
-``` bash
-$ php bin/vendors install
-```
-
-Then you need to add the Ijanki namespace to your autoloader:
-
-``` php
-<?php
-// app/autoload.php
-
-$loader->registerNamespaces(array(
-    // ...
-    'Ijanki' => __DIR__.'/../vendor/bundles',
-));
-```
-
-#### For Symfony >= 2.1
-
-Add the following dependency to your composer.json file:
-
-    "require": {
-        # ..
-        "ijanki/ftp-bundle": "*"
-        # ..
-    }
+    $ composer require ijanki/ftp-bundle
 
 ### Step 2: Enable the bundle
 
@@ -56,10 +22,10 @@ Finally, enable the bundle in the kernel:
 
 public function registerBundles()
 {
-    $bundles = array(
+    $bundles = [
         // ...
         new Ijanki\Bundle\FtpBundle\IjankiFtpBundle(),
-    );
+    ];
 }
 ```
 
@@ -100,5 +66,3 @@ Check Ftp.php for other added methods.
 ## Credits
 
 Inspired by https://github.com/dg/ftp-php
-
-
