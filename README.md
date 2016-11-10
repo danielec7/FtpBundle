@@ -2,7 +2,7 @@
 
 A Symfony2 Bundle to wrap the PHP ftp extension functionality in a more "classy" way.
 
-[![Build Status](https://secure.travis-ci.org/iJanki/FtpBundle.png?branch=master)](http://travis-ci.org/iJanki/FtpBundle)
+[![Latest Stable Version](https://poser.pugx.org/ijanki/ftp-bundle/v/stable)](https://packagist.org/packages/ijanki/ftp-bundle)] [![Build Status](https://secure.travis-ci.org/iJanki/FtpBundle.png?branch=master)](http://travis-ci.org/iJanki/FtpBundle)] [![Total Downloads](https://poser.pugx.org/ijanki/ftp-bundle/downloads)](https://packagist.org/packages/ijanki/ftp-bundle) [![License](https://poser.pugx.org/ijanki/ftp-bundle/license)](https://packagist.org/packages/ijanki/ftp-bundle)
 
 ##Installation
 
