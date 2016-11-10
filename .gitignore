@@ -1,2 +1,7 @@
 /phpunit.xml
 /vendor/
+/.idea/
+nbproject
+catalog.xml
+composer.phar
+composer.lock
