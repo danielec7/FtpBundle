@@ -20,6 +20,6 @@
         "symfony/config": "*"
     },
     "autoload": {
-        "psr-4": { "Ijanki\\Bundle\\FtpBundle": "" }
+        "psr-4": { "Ijanki\\Bundle\\FtpBundle\\": "" }
     }
 }
