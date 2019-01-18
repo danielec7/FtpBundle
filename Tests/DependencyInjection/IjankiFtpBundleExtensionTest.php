@@ -5,7 +5,7 @@ namespace Ijanki\Bundle\FtpBundle\Tests\DependencyInjection;
 use Ijanki\Bundle\FtpBundle\DependencyInjection\IjankiFtpExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class IjankiFtpBundleExtensionTest extends \PHPUnit_Framework_Testcase
+class IjankiFtpBundleExtensionTest extends \PHPUnit\Framework\TestCase
 {
     public function testDefault()
     {
