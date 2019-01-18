@@ -14,10 +14,13 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.1",
         "symfony/dependency-injection": "*",
         "symfony/http-kernel": "*",
         "symfony/config": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0"
     },
     "autoload": {
         "psr-4": { "Ijanki\\Bundle\\FtpBundle\\": "" }

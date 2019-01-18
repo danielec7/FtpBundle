@@ -17,8 +17,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ijanki_ftp');
+        $treeBuilder = new TreeBuilder('ijanki_ftp');
+        $rootNode = method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('ijanki_ftp');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
