@@ -94,11 +94,11 @@ class Ftp
 
         return $result;
     }
-    
+
     /**
      * Put a string in remote $file_name
      */
-    
+
     public function putContents($file_name, $data, $mode = FTP_ASCII)
     {
         if (!is_resource($this->resource)) {
@@ -109,7 +109,7 @@ class Ftp
         fseek($temp, 0);
         return $this->fput($file_name, $temp, $mode);
     }
-    
+
     public function isDir($dir)
     {
     	$current = $this->pwd();
@@ -121,7 +121,7 @@ class Ftp
         }
     	return empty($e);
     }
-    
+
     public function mkDirRecursive($dir)
     {
         $parts = explode('/', $dir);
@@ -156,7 +156,7 @@ class Ftp
     public function connectUrl($url)
     {
         if(!preg_match('!^ftp(?<ssl>s?)://(?<user>[^:]+):(?<pass>[^@]+)@(?<host>[^:/]+)(?:[:](?<port>\d+))?(?<path>.*)$!i', $url, $match)) {
-            throw new \FtpException('Url must be in format: ftp[s]://username:password@hostname[:port]/[path]');
+            throw new FtpException('Url must be in format: ftp[s]://username:password@hostname[:port]/[path]');
         }
 
         // default port if necessary
@@ -170,7 +170,7 @@ class Ftp
 
         // authenticate
         if (!$this->login($match['user'], $match['pass'])) {
-            throw new \FtpException("Login failed as " . $match['user']);
+            throw new FtpException("Login failed as " . $match['user']);
         }
 
         // normalize and change to path, if one given
