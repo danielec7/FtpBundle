@@ -75,12 +75,12 @@ class Ftp
             } catch (\ErrorException $e) {
                 throw new FtpException($e->getMessage());
             }
-            if (!is_resource($this->resource)) {
+            if (!$this->resource instanceof \FTP\Connection) {
                 throw new FtpException("An error occured while trying to connect to FTP server.");
             }
             $result = null;
 
-        } elseif (!is_resource($this->resource)) {
+        } elseif (!$this->resource instanceof \FTP\Connection) {
             throw new FtpNotConnectedException();
         } else {
             array_unshift($args, $this->resource);
@@ -101,7 +101,7 @@ class Ftp
 
     public function putContents($file_name, $data, $mode = FTP_ASCII)
     {
-        if (!is_resource($this->resource)) {
+        if (!$this->resource instanceof \FTP\Connection) {
             throw new FtpException("Not connected to FTP server. Call connect() or ssl_connect() first.");
         }
         $temp = tmpfile();
